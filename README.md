@@ -2,7 +2,7 @@
 
 本例子是通过server端获取鉴权信息， 适用于小程序云以及用node的server端， 小程序拿到了鉴权信息之后，就可以通过soe语音评测小程序插件来进行语音评测。
 
-首先把authorization.js上传到server或者小程序云函数内，然后直接调用就能获取到authorization返回给小程序：
+首先把authorization.js上传到server或者小程序云函数内，然后直接调用就能获取到authorization返回给小程序，正式部署时请再后端加一层自己网站本身的权限检验，如果是使用自带权限检验的小程序云，则不用：
 
 express:
 ```javascript
