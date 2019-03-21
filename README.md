@@ -1,6 +1,6 @@
-# 后端获取授权authorization例子
+# soe语音评测后端获取授权authorization例子
 
-本例子是通过server端获取鉴权信息， 适用于小程序云以及用node的server端， 小程序拿到了鉴权信息之后，就可以直接对云api发起请求。
+本例子是通过server端获取鉴权信息， 适用于小程序云以及用node的server端， 小程序拿到了鉴权信息之后，就可以通过soe语音评测小程序插件来进行语音评测。
 首先把authorization.js上传到server或者小程序云函数内，然后直接调用就能获取到authorization返回给小程序：
 
 express:
