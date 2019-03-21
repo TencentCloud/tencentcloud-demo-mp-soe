@@ -1,2 +1,2 @@
-#后台获取授权authorization例子
+# 后台获取授权authorization例子
 
