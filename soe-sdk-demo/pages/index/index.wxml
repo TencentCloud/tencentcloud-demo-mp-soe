@@ -1,0 +1,79 @@
+<view class="container">
+<view class="section">
+ <input maxlength="9000" placeholder="评测内容" value='{{content}}' bindinput="contentBindKeyInput" />
+</view>
+
+<view class='section'>
+<radio-group class="radio-group" bindchange="serverTypeChange">
+  <label class="radio" wx:for="{{serverTypeItems}}" wx:key="name">
+    <radio value="{{item.name}}" checked="{{item.checked}}" />
+    {{item.value}}
+  </label>
+</radio-group>
+</view>
+
+
+<view class='section'>
+<radio-group class="radio-group" bindchange="evalModeChange">
+  <label class="radio" wx:for="{{evalModeItems}}" wx:key="name">
+    <radio value="{{item.name}}" checked="{{item.checked}}" />
+    {{item.value}}
+  </label>
+</radio-group>
+</view>
+
+
+<view class='section'>
+<radio-group class="radio-group" bindchange="storageModeChange">
+  <label class="radio" wx:for="{{storageModeItems}}" wx:key="name">
+    <radio value="{{item.name}}" checked="{{item.checked}}" />
+    {{item.value}}
+  </label>
+</radio-group>
+</view>
+
+<view class='section'>
+<radio-group class="radio-group" bindchange="textModeChange">
+  <label class="radio" wx:for="{{textModeItems}}" wx:key="name">
+    <radio value="{{item.name}}" checked="{{item.checked}}" />
+    {{item.value}}
+  </label>
+</radio-group>
+</view>
+
+<view class="section">
+<label>苛刻指数[1.0-4.0]</label>
+ <input placeholder="" value='{{scoreCoeff}}' bindinput="scoreCoeffBindKeyInput" />
+</view>
+
+<view class="section">
+<label>录音时长</label>
+ <input placeholder="" value='{{duration}}' bindinput="durationBindKeyInput" />
+</view>
+
+<view class="section">
+<label>SoeAppId</label>
+ <input placeholder="" value='{{soeAppId}}' bindinput="soeAppIdBindKeyInput" />
+</view>
+
+<button ontouchstart="ontouchstart" ontouchend="ontouchend">{{ btnText }}</button>
+<view>
+    完整度：{{PronCompletion}}
+</view>
+<view>
+    流利度：{{PronFluency}}
+</view>
+<view>
+    精准度: {{PronAccuracy}}
+</view>
+
+  <scroll-view
+    scroll-y
+    style="height: 800rpx;"
+  >
+    <view class="resps" wx:for="{{resps}}" wx:key="index">
+    {{item}}
+    </view>
+  </scroll-view>
+
+</view>

@@ -1,0 +1,18 @@
+/* pages/index/index.wxss */
+.container{
+    background: #eee;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+input{
+  background: #fff;
+  height: 70rpx;
+  padding: 4rpx 40rpx;
+}
+.section{
+  margin: 40rpx 0;
+}
+.resps{
+  word-break:break-all;
+  margin-bottom: 50rpx;
+}
