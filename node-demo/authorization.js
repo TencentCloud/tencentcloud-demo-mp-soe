@@ -34,7 +34,8 @@ function get(secret_id, secret_key) {
   const canonical_querystring = ''
   const host = 'soe.tencentcloudapi.com'
   let timestamp = parseInt(new Date().getTime() / 1000)
-  let [service, algorithm, date] = ['soe', 'TC3-HMAC-SHA256', dateFormat(new Date(timestamp * 1000), "yyyy-MM-dd")]
+  let timeZoneOffset = new Date().getTimezoneOffset();
+  let [service, algorithm, date] = ['soe', 'TC3-HMAC-SHA256', dateFormat(new Date(timestamp * 1000 + timeZoneOffset * 60 * 1000), "yyyy-MM-dd")]
   let ct = "json"
   let payload = 'UNSIGNED-PAYLOAD'
   let canonical_headers = `content-type:application/${ct}\nhost:${host}\n`
