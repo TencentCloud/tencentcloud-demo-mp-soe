@@ -1,4 +1,4 @@
-<button bindtap="toTestPage">to test page</button>
+<view>pages/test/test.wxml</view>
 <view class="container">
 <view class="section">
  <input maxlength="9000" placeholder="评测内容" value='{{content}}' bindinput="contentBindKeyInput" />
