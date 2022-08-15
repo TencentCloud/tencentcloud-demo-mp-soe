@@ -1,18 +1,19 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+    "pages/index/index",
+    "pages/test/test"
   ],
   "plugins": {
     "myPlugin": {
-      "version": "1.1.1",
+      "version": "1.1.11",
       "provider": "wxe5a00a1780c8eb95"
     }
-  }
-  ,
-  "window":{
-    "backgroundTextStyle":"light",
+  },
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "智聆sdk demo",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
 }

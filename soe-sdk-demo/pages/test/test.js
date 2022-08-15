@@ -1,30 +1,3 @@
-
-/**
-// 通过小程序云函数获取授权凭证
-if (!wx.cloud) {
-  console.error('请使用 2.2.3 或以上的基础库以使用云能力 。。')
-} else {
-  wx.cloud.init({
-    traceUser: true,
-  })
-}
-
-let manager = plugin.getSoeRecorderManager({
-  getAuthorization: function (callback) {
-    wx.cloud.callFunction({
-      name: 'getAuthorization',
-      data: {},
-      success: data => {
-        console.log('test:', data)
-        callback({
-          timestamp: data.result.timestamp,
-          authorization: data.result.authorization
-        })
-      }
-    })
-  }
-});
- */
 let manager = null;
 
 Page({
@@ -60,12 +33,6 @@ Page({
     scoreCoeff: 1.5,
     textMode: 0,
     duration: 8000
-  },
-
-  toTestPage() {
-    wx.navigateTo({
-      url: '/pages/test/test',
-    })
   },
 
   contentBindKeyInput(e) {
@@ -116,14 +83,16 @@ Page({
     })
   },
 
-  onShow: function() {
+  onLoad: function () {
+
     let plugin = requirePlugin("myPlugin");
     manager = plugin.getSoeRecorderManager({
       secretId: 'yourSecretId',
       secretKey: 'yourSecretKey'
     });
+
     manager.onSuccess((res) => {
-      console.log('onSuccess');
+      console.log('test-onSuccess');
       this.setData({
         PronAccuracy: res.PronAccuracy,
         PronFluency: res.PronFluency,
@@ -139,7 +108,7 @@ Page({
     })
 
     manager.onStart(() => {
-      console.log('index--onStart');
+      console.log('test-onstart');
       this.setData({
         resps: [],
         btnText: '录制中'
@@ -156,14 +125,9 @@ Page({
       console.log(res)
     })
   },
-  onUnload: function() {
-    manager = null;
-  },
-  onLoad: function () {
-  },
 
   ontouchstart: function () {
-    console.log('ontouchstart');
+
     manager.start({
       content: this.data.content,
       evalMode: this.data.evalMode,
@@ -176,7 +140,6 @@ Page({
     })
   },
   ontouchend: function () {
-    console.log('ontouchEnd');
     manager.stop()
   }
 })
