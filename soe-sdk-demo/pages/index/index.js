@@ -31,7 +31,7 @@ Page({
   data: {
     resps: [],
 
-    btnText: '开始录制',
+    btnText: '长按录制',
 
     serverTypeItems: [
       { name: 0, value: '英文', checked: 'true' },
@@ -134,7 +134,7 @@ Page({
 
     manager.onStop(() => {
       this.setData({
-        btnText: '开始录制'
+        btnText: '长按录制'
       })
     })
 

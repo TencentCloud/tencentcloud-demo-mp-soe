@@ -57,7 +57,7 @@
  <input placeholder="" value='{{soeAppId}}' bindinput="soeAppIdBindKeyInput" />
 </view>
 
-<button ontouchstart="ontouchstart" ontouchend="ontouchend">{{ btnText }}</button>
+<button onlongpress="ontouchstart" ontouchend="ontouchend">{{ btnText }}</button>
 <view>
     完整度：{{PronCompletion}}
 </view>
