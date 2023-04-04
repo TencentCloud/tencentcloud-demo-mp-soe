@@ -5,7 +5,7 @@
   ],
   "plugins": {
     "myPlugin": {
-      "version": "1.1.11",
+      "version": "1.2.22",
       "provider": "wxe5a00a1780c8eb95"
     }
   },
