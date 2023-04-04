@@ -1,30 +1,5 @@
 
-/**
-// 通过小程序云函数获取授权凭证
-if (!wx.cloud) {
-  console.error('请使用 2.2.3 或以上的基础库以使用云能力 。。')
-} else {
-  wx.cloud.init({
-    traceUser: true,
-  })
-}
-
-let manager = plugin.getSoeRecorderManager({
-  getAuthorization: function (callback) {
-    wx.cloud.callFunction({
-      name: 'getAuthorization',
-      data: {},
-      success: data => {
-        console.log('test:', data)
-        callback({
-          timestamp: data.result.timestamp,
-          authorization: data.result.authorization
-        })
-      }
-    })
-  }
-});
- */
+let plugin = requirePlugin("myPlugin");
 let manager = null;
 
 Page({
@@ -115,12 +90,34 @@ Page({
       textMode: e.detail.value
     })
   },
-
-  onShow: function() {
-    let plugin = requirePlugin("myPlugin");
+  onShow: function () {
+    // 使用固定密钥获取授权
+    // manager = plugin.getSoeRecorderManager({
+    //   secretId: 'yourSecretId',
+    //   secretKey: 'yourSecretKey'
+    // });
+    // 使用云函数获取临时凭证
+    if (!wx.cloud) {
+      console.error('请使用 2.2.3 或以上的基础库以使用云能力 。。')
+    } else {
+      wx.cloud.init({
+        traceUser: true,
+      })
+    }
     manager = plugin.getSoeRecorderManager({
-      secretId: 'yourSecretId',
-      secretKey: 'yourSecretKey'
+      getAuthorization: function (callback) {
+        wx.cloud.callFunction({
+          name: 'getToken',
+          data: {},
+          success: data => {
+            callback({
+              Token: data.result.Credentials.Token,
+              TmpSecretId: data.result.Credentials.TmpSecretId,
+              TmpSecretKey: data.result.Credentials.TmpSecretKey
+            })
+          }
+        })
+      }
     });
     manager.onSuccess((res) => {
       console.log('onSuccess');
@@ -156,7 +153,7 @@ Page({
       console.log(res)
     })
   },
-  onUnload: function() {
+  onUnload: function () {
     manager = null;
   },
   onLoad: function () {
